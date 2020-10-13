@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root "sessions#welcome"
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  post "/signout" => "sessions#destroy"
+  get "/signup" => "users#new"
+
   resources :ingredient_recipes
   resources :comments
   resources :ingredients
