@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "sessions#welcome"
-  get "/login" => "sessions#new"
-  post "/login" => "sessions#create"
-  post "/signout" => "sessions#destroy"
-  get "/signup" => "users#new"
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  post "logout", to: "sessions#destroy"
+  get "signup", to: "users#new"
 
   resources :ingredient_recipes
   resources :comments
