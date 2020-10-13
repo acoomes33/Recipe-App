@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
     def welcome
     end 
 
-    def login
+    def new
     end 
 
-    def signup
+    def create
     end
 
 end 
