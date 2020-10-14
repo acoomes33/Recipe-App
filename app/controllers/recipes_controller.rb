@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe!, only: [:show, :edit, :update]
+    before_action :set_recipe!, only: [:show, :edit, :update, :destroy]
 
     def new
         @recipe = Recipe.new
@@ -9,10 +9,10 @@ class RecipesController < ApplicationController
         @recipe = Recipe.new(recipe_params)
         if @recipe.valid?
             @recipe.save
-            session[:recipe_id] = @recipe.id
             # redirect_to recipe_path
             redirect_to recipe_path(@recipe)
         else
+            flash[:notice] = @recipe.errors.full_messages.join(" ")
             render :new
         end
     end 
@@ -35,6 +35,11 @@ class RecipesController < ApplicationController
         else 
             render :edit
         end 
+    end 
+
+    def destroy
+        @recipe.destroy
+        redirect_to root_path
     end 
 
     private
