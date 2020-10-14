@@ -1,0 +1,13 @@
+<%= form_with model:@recipe, local: :true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= form.fields_for :ingredients do |ing| %>
+        <%= ing.label :name %>
+        <%= ing.text_field :name %>
+        <%= ing.label :name %>
+        <%= ing.text_field :name %>
+        <%= ing.label :name %>
+        <%= ing.text_field :name %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
