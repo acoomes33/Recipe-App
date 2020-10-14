@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe!, only: [:show, :edit, :update, :destroy]
+    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
     def new
         @recipe = Recipe.new
@@ -40,6 +40,7 @@ class RecipesController < ApplicationController
     def destroy
         @recipe.destroy
         redirect_to root_path
+        # redirect_to recipes_path
     end 
 
     private
@@ -57,7 +58,7 @@ class RecipesController < ApplicationController
         )
     end
 
-    def set_recipe!
+    def set_recipe
         @recipe = Recipe.find(params[:id])
       end
 

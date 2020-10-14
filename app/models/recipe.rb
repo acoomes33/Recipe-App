@@ -5,6 +5,6 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :ingredient_recipes
   has_many :users, through: :comments
 
-  validates_presence_of [:name, :steps, :description]
-  
+  validates_presence_of :name, :steps, :description
+
 end

@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
             # redirect_to comment_path
             redirect_to comment_path(@comment)
         else
+            flash[:notice] = @comment.errors.full_messages.join(" ")
             render :new
         end
     end 
