@@ -7,4 +7,6 @@ class Recipe < ApplicationRecord
 
   validates_presence_of :name, :steps, :description
 
+  accepts_nested_attributes_for :ingredients, reject_if: proc {|ing| ing['name'].blank? || ing['count'].blank? || ing['measurement'].blank? }
+
 end

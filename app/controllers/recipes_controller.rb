@@ -1,8 +1,10 @@
 class RecipesController < ApplicationController
+    # layout "custom"
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
     def new
         @recipe = Recipe.new
+        10.times { @recipe.ingredients.build }
     end 
 
     def create
@@ -54,7 +56,8 @@ class RecipesController < ApplicationController
             :dietary_restrictions,
             :created_at,
             :updated_at,
-            :user_id
+            :user_id,
+            ingredients_attributes:[:name, :count, :measurement] 
         )
     end
 
