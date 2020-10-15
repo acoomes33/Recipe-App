@@ -54,9 +54,6 @@ class RecipesController < ApplicationController
             :steps,
             :stars,
             :dietary_restrictions,
-            :created_at,
-            :updated_at,
-            :user_id,
             ingredients_attributes:[:name, :count, :measurement] 
         )
     end

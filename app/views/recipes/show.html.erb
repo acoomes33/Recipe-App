@@ -1,2 +1,12 @@
-<h6><%= link_to "Edit", edit_sushi_path(@sushi) %></h6>
+<h1>Recipe Show Page</h1>
+<h2><%= @recipe.name %></h2>
+<p><%= @recipe.description %></p>
+<ul>
+<%= @recipe.ingredients.each do |ing| %>
+<li> <%= ing.count %> <%= ing.measurement %> <%= ing.name %> </li>
+<% end %>
+</ul>
+<p><%= @recipe.steps %></p>
+
+<h6><%= button_to "Edit", edit_recipe_path(@recipe), method: :get %></h6>
 <h6><%= button_to "Delete", @recipe, method: :delete, data: {confirm: "Delete this recipe?"} %></h6>
