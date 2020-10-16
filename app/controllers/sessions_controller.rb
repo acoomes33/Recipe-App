@@ -10,14 +10,14 @@ class SessionsController < ApplicationController
         if request.env["omniauth.auth"]
             # Logged in via OAuth
             raise auth_hash.inspect 
-            oauth_user_name = request.env["omniauth.auth"]["user_name"]
-            if @user = User.find_by(user_name: params[:user_name])
+            oauth_email = request.env["omniauth.auth"]["email"]
+            if @user = User.find_by(email: params[:email])
                 session[:user_id] = @user.id
 
                 redirect_to root_path
             else 
                 byebug
-                user = User.create(:user_name => oauth_user_name)
+                user = User.create(:email => oauth_email)
 
                 redirect_to root_path
             end 
