@@ -1,22 +1,32 @@
 <h1>Recipe Show Page</h1>
 <h2><%= @recipe.name %></h2>
-<p><%= @recipe.description %></p>
+<p>Description: <%= @recipe.description %></p>
+<h4>Dietary Restrictions: </h4>
 <ul>
-<%= @recipe.ingredients.each do |ing| %>
+<% @recipe.dietary_restrictions.each do |diet| %>
+<li> <%= diet.name %> </li>
+<% end %>
+</ul><br>
+<h4>Ingredients:</h4><br>
+<ul>
+<% @recipe.ingredients.each do |ing| %>
 <li> <%= ing.count %> <%= ing.measurement %> <%= ing.name %> </li>
 <% end %>
 </ul>
+
+<h4>Instructions: </h4>
 <p><%= @recipe.steps %></p>
 
 <h4>Comments: </h4>
 <ul>
-<%# @recipe.comments.each do |comment| %>
-<%# <li> <%= comment.title %> <%# <br> %>
-<%# comment.rating %>
-<%# <%= comment.body %>
-
-<%# end %>
+<%= @recipe.comments.each do |comment| %>
+<li> <%= comment.title %><br>
+<%= comment.rating %><br>
+<%= comment.body %> </li>
+<% end %>
 </ul>
 
-<h6><%= button_to "Edit", edit_recipe_path(@recipe), method: :get %></h6>
+<%= link_to "Add a Comment", new_comment_path(recipe_id: @recipe.id, user_id: current_user.id) %>
+
+<h6><%= link_to "Edit", edit_recipe_path(@recipe), method: :get %></h6>
 <h6><%= button_to "Delete", @recipe, method: :delete, data: {confirm: "Delete this recipe?"} %></h6>

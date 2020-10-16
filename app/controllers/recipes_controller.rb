@@ -5,10 +5,11 @@ class RecipesController < ApplicationController
     def new
         @recipe = Recipe.new
         10.times { @recipe.ingredients.build }
+        5.times { @recipe.dietary_restrictions.build }
     end 
 
     def create
-        @recipe = Recipe.new(recipe_params)
+        @recipe = current_user.recipes.new(recipe_params)
         if @recipe.valid?
             @recipe.save
             # redirect_to recipe_path

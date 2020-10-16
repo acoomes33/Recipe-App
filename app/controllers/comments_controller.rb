@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     end 
 
     def create
+        byebug
         @comment = Comment.new(comment_params)
         if @comment.valid?
             @comment.save
@@ -45,7 +46,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:title, :body)
+        params.require(:comment).permit(:title, :body, :rating)
     end 
 
     def set_comment

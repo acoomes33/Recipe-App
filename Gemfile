@@ -26,6 +26,9 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 
+#authorization restriction
+gem 'cancancan', '~> 3.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
