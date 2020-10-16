@@ -1,10 +1,10 @@
 <h1>Login</h1>
 <%= form_with url:login_path do %>
-  <%= label_tag :user_name %><br>
-  <%= text_field_tag :user_name %><br>
+  <%= label_tag :email %><br>
+  <%= email_field_tag :email %><br>
   <%= label_tag :password %><br>
   <%= password_field_tag :password %><br>
   <%= submit_tag "Login" %>
 <%end%>
 
-<p><%= link_to "Login via GitHub", "/auth/github" %></p>
+<p><%= link_to "Log In With Google", '/auth/google_oauth2'%></p>

@@ -12,10 +12,6 @@ Fusce posuere ligula vel mattis ornare. Integer a lacus vel dui elementum eleife
 
 Fusce nec augue aliquet, gravida purus non, efficitur urna. Etiam euismod fermentum lacus, id aliquam eros. Curabitur in est finibus, vulputate nisi et, rhoncus sapien. Morbi a tellus porta, ullamcorper augue at, congue urna. Maecenas sit amet rhoncus ante. Duis sit amet volutpat odio. Aliquam dapibus ac nunc ac vulputate. Nullam et vestibulum quam, in aliquet nisi.
 DOC
-user1 = User.create(user_name: "user1", first_name: "Bob", last_name: "Harry")
-user2 = User.create(user_name: "user2", first_name: "Simon", last_name: "Johnson")
-user3 = User.create(user_name: "user3", first_name: "Mary", last_name: "Garrison")
-user4 = User.create(user_name: "user4", first_name: "Jessica", last_name: "Dupree")
 
 Recipe.create(name:"Chicken Bake", description:"yummy food", steps: filler_steps, stars: 5, dietary_restrictions: "Gluten-Free", user_id: 1)
 Recipe.create(name:"Eggplant Parmesan", description:"good eats", steps: filler_steps, stars: 5, dietary_restrictions: "Nut-Free", user_id: 2) 

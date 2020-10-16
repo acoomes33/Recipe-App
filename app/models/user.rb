@@ -4,11 +4,10 @@ class User < ApplicationRecord
     has_many :recipes
     has_secure_password
 
-    validates_presence_of :first_name, :last_name, :email, :user_name
-    validates_uniqueness_of :email, :user_name
+    validates_presence_of :email, :first_name, :last_name
+    validates_uniqueness_of :email 
 
-    def self.full_name
-        byebug 
+    def full_name 
         "#{self.first_name} #{self.last_name}"
     end 
 

@@ -6,31 +6,30 @@ class SessionsController < ApplicationController
     def new
     end 
 
-    def create
-        if request.env["omniauth.auth"]
-            # Logged in via OAuth
-            raise auth_hash.inspect 
-            oauth_email = request.env["omniauth.auth"]["email"]
-            if @user = User.find_by(email: params[:email])
-                session[:user_id] = @user.id
-
-                redirect_to root_path
-            else 
-                byebug
-                user = User.create(:email => oauth_email)
-
-                redirect_to root_path
-            end 
+    def google
+        byebug
+        @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+          user.first_name = auth["info"]["first_name"]
+          user.last_name = auth["info"]["last_name"]
+          user.password= SecureRandom.hex(8)
+        end
+        if @user && @user.id
+          session[:user_id] = @user.id
+          redirect_to recipes_path
         else
-            # Normal Login
-            @user = User.find_by(user_name: params[:user_name])
-            if @user && @user.authenticate(params[:password])
-                session[:user_id] = @user.id
-                redirect_to recipes_path
-            else
-                flash[:notice] = @user.errors.full_messages.join(" ")
-                redirect_to login_path
-            end
+          redirect_to login_path
+        end
+      end  
+
+    def create
+        # Normal Login
+        @user = User.find_by(email: params[:email])
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect_to recipes_path
+        else
+            flash[:notice] = @user.errors.full_messages.join(" ")
+            redirect_to login_path
         end 
     end
 
@@ -38,5 +37,10 @@ class SessionsController < ApplicationController
         session.clear
         redirect_to root_path
     end 
+
+    private  
+  def auth
+    request.env['omniauth.auth']
+  end
 
 end 
