@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     end 
 
     def google
-        byebug
         @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
           user.first_name = auth["info"]["first_name"]
           user.last_name = auth["info"]["last_name"]

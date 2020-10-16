@@ -10,6 +10,19 @@
   </head>
 
   <body>
+      <nav class="menu">
+        <% if logged_in? %>
+          <%= link_to "Logout", logout_path, method: "delete" %>
+          <br>
+          <ul>
+          <li><%= link_to "Search All Recipes", recipes_path%></li>
+          <li><%= link_to "Create A New Recipe", new_recipe_path%><br>
+        <% else %>
+          <li><%= link_to "Login", login_path %></li>
+          <li><%= link_to "Signup", signup_path %></li><br>
+          </ul>
+          <% end %>
+      </nav>
     <% if flash[:notice] %>
       <div><%= flash[:notice] %></div>
     <% end %>
