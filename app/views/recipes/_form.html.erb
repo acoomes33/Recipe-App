@@ -3,8 +3,11 @@
     <%= f.text_field :name %><br>
     <%= f.label :description %>
     <%= f.text_field :description %><br>
-    <%= f.label :dietary_restrictions %>
-    <%= f.text_field :dietary_restrictions %><br>
+    <h4>Dietary Restrictions: </h4>
+    <%= f.fields_for :dietary_restrictions do |diet| %>
+        <%= diet.label :name %>
+        <%= diet.text_field :name %><br>
+    <% end %>
     <br>
     <h4>Ingredients: </h4>
     <%= f.fields_for :ingredients do |ing| %>

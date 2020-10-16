@@ -13,12 +13,12 @@ Fusce posuere ligula vel mattis ornare. Integer a lacus vel dui elementum eleife
 Fusce nec augue aliquet, gravida purus non, efficitur urna. Etiam euismod fermentum lacus, id aliquam eros. Curabitur in est finibus, vulputate nisi et, rhoncus sapien. Morbi a tellus porta, ullamcorper augue at, congue urna. Maecenas sit amet rhoncus ante. Duis sit amet volutpat odio. Aliquam dapibus ac nunc ac vulputate. Nullam et vestibulum quam, in aliquet nisi.
 DOC
 
-Recipe.create(name:"Chicken Bake", description:"yummy food", steps: filler_steps, stars: 5, dietary_restrictions: "Gluten-Free", user_id: 1)
-Recipe.create(name:"Eggplant Parmesan", description:"good eats", steps: filler_steps, stars: 5, dietary_restrictions: "Nut-Free", user_id: 2) 
-Recipe.create(name:"Spaghetti and Meatballs", description:"delicious and healthy", steps: filler_steps, stars: 5, dietary_restrictions: "Low FODMAP", user_id: 3 )
-Recipe.create(name:"Beef Ramen", description:"hearty", steps: filler_steps, stars: 5, dietary_restrictions: "Gluten-Free", user_id: 4 )
-Recipe.create(name:"Gluten-free Bread", description:"organic food", steps: filler_steps, stars: 5, dietary_restrictions: "Kosher", user_id: 1 )
-Recipe.create(name:"Roasted Chicken", description:"soooo gooood", steps: filler_steps, stars: 5, dietary_restrictions: "Low FODMAP", user_id: 2 )
-Recipe.create(name:"Cheesy Mashed Potatoes", description:"Delish and tasty", steps: filler_steps, stars: 5, dietary_restrictions: "Gluten-Free", user_id: 3 )
-Recipe.create(name:"Banana Pancakes", description:"great recipe and healthy", steps: filler_steps, stars: 5, dietary_restrictions: "Halal", user_id: 4 )
-Recipe.create(name:"Raspberry Smoothie", description:"fresh ingredients", steps: filler_steps, stars: 5, dietary_restrictions: "Nut-Free", user_id: 1 )
+Recipe.create(name:"Chicken Bake", description:"yummy food", steps: filler_steps, stars: 5,  user_id: 1)
+Recipe.create(name:"Eggplant Parmesan", description:"good eats", steps: filler_steps, stars: 5, user_id: 2) 
+Recipe.create(name:"Spaghetti and Meatballs", description:"delicious and healthy", steps: filler_steps, stars: 5, user_id: 3 )
+Recipe.create(name:"Beef Ramen", description:"hearty", steps: filler_steps, stars: 5, user_id: 4 )
+Recipe.create(name:"Gluten-free Bread", description:"organic food", steps: filler_steps, stars: 5, user_id: 1 )
+Recipe.create(name:"Roasted Chicken", description:"soooo gooood", steps: filler_steps, stars: 5, user_id: 2 )
+Recipe.create(name:"Cheesy Mashed Potatoes", description:"Delish and tasty", steps: filler_steps, stars: 5, user_id: 3 )
+Recipe.create(name:"Banana Pancakes", description:"great recipe and healthy", steps: filler_steps, stars: 5, user_id: 4 )
+Recipe.create(name:"Raspberry Smoothie", description:"fresh ingredients", steps: filler_steps, stars: 5, user_id: 1 )
