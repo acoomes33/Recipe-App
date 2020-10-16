@@ -1,0 +1,12 @@
+<% title "Comments" %>
+
+<div id="comments">
+<% for comment in @comments %>
+    <div class="comment">
+    <%= simple_format comment.content %>
+    </div>
+<%end %>
+</div>
+<h2>New Comment</h2>
+
+<%= render 'form' %>

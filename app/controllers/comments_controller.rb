@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
     before_action :set_recipe, only: [:edit, :update, :destroy]
 
     def index
-        @comments = Comment.all
+        @recipe = Recipe.find_by[id: params[:recipe_id]]
+        @comments = @recipe.comments
     end 
 
     def new
@@ -49,4 +50,5 @@ class CommentsController < ApplicationController
 
     def set_comment
         Comment.find_by(id: params[:id])
+    end
 end
