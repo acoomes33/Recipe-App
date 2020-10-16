@@ -21,6 +21,12 @@ class RecipesController < ApplicationController
     end 
 
     def show
+        if @recipe
+            render :show
+          else
+            flash[:notice] = "Recipe not Found!"
+            redirect_to recipes_path
+          end
     end 
 
     def index
@@ -45,6 +51,15 @@ class RecipesController < ApplicationController
         redirect_to root_path
         # redirect_to recipes_path
     end 
+
+    def search
+
+    end
+  
+    def results
+      @recipes = Recipe.search(params[:q])
+      render :index
+    end
 
     private
 
