@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_233026) do
+ActiveRecord::Schema.define(version: 2020_10_16_010900) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -24,19 +24,19 @@ ActiveRecord::Schema.define(version: 2020_10_15_233026) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "dietary_restriction_recipes", force: :cascade do |t|
+    t.integer "dietary_restriction_id", null: false
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dietary_restriction_id"], name: "index_dietary_restriction_recipes_on_dietary_restriction_id"
+    t.index ["recipe_id"], name: "index_dietary_restriction_recipes_on_recipe_id"
+  end
+
   create_table "dietary_restrictions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ingredient_recipes", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "ingredient_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_ingredient_recipes_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_ingredient_recipes_on_recipe_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2020_10_15_233026) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "measurement"
+    t.integer "recipe_id", null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -70,7 +72,8 @@ ActiveRecord::Schema.define(version: 2020_10_15_233026) do
 
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
-  add_foreign_key "ingredient_recipes", "ingredients"
-  add_foreign_key "ingredient_recipes", "recipes"
+  add_foreign_key "dietary_restriction_recipes", "dietary_restrictions"
+  add_foreign_key "dietary_restriction_recipes", "recipes"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "recipes", "users"
 end

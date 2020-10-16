@@ -8,5 +8,15 @@
 </ul>
 <p><%= @recipe.steps %></p>
 
+<h4>Comments: </h4>
+<ul>
+<%# @recipe.comments.each do |comment| %>
+<%# <li> <%= comment.title %> <%# <br> %>
+<%# comment.rating %>
+<%# <%= comment.body %>
+
+<%# end %>
+</ul>
+
 <h6><%= button_to "Edit", edit_recipe_path(@recipe), method: :get %></h6>
 <h6><%= button_to "Delete", @recipe, method: :delete, data: {confirm: "Delete this recipe?"} %></h6>

@@ -23,6 +23,7 @@ class RecipesController < ApplicationController
     end 
 
     def index
+        byebug
         @recipes = Recipe.all
     end 
 
