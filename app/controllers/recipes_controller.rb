@@ -70,8 +70,8 @@ class RecipesController < ApplicationController
             :steps,
             :stars,
             :dietary_restrictions,
-            ingredients_attributes:[:name, :count, :measurement] ,
-            dietary_restrictions_attributes:[:name]
+            ingredients_attributes:[:id, :name, :count, :measurement] ,
+            dietary_restrictions_attributes:[:id, :name]
         )
     end
 
