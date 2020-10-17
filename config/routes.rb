@@ -10,11 +10,10 @@ Rails.application.routes.draw do
   get '/recipes/search', to:'recipes#search'
   post '/search', to:'recipes#results'
 
-  resources :comments
-  resources :ingredients
+  # resources :ingredients
   resources :recipes
-  resources :users
-  
+  # resources :users
+
   resources :recipes do
     resources :comments
   end
