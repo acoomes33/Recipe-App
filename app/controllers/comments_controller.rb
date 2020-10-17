@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
     def index
         if params[:recipe_id]
-          @recipe = current_uer.recipes.find_by_id(params[:recipe_id])
+          @recipe = Recipe.find_by_id(params[:recipe_id])
           # also verify that recipe exists
           @comments = @recipe.comments
         else 
@@ -12,13 +12,13 @@ class CommentsController < ApplicationController
     
       def show
         if params[:recipe_id]
-          @recipe = current_user.recipes.find_by_id(params[:recipe_id])
+          @recipe = Recipe.find_by_id(params[:recipe_id])
           
           set_comment
           if @recipe.comments.include?(@comment)
              render :show
           else
-            flash[:notice] = "comment doesn't belong to recipe."
+            flash[:notice] = "Comment doesn't belong to recipe."
             redirect_to recipes_path
           end
         else 
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     
       def new
         if params[:recipe_id]
-          @recipe = current_user.recipes.find_by_id(params[:recipe_id])
+          @recipe = Recipe.find_by_id(params[:recipe_id])
           @comment = @recipe.comments.build
         else 
           @comment = Comment.new
@@ -37,8 +37,9 @@ class CommentsController < ApplicationController
     
       def create
         if params[:recipe_id]
-          @recipe = current_user.recipes.find_by_id(params[:recipe_id])
+          @recipe = Recipe.find_by_id(params[:recipe_id])
           @comment = @recipe.comments.build(comment_params)
+          @comment.user_id = current_user.id
         else 
           @comment = Comment.new(comment_params)
         end

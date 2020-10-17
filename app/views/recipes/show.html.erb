@@ -19,7 +19,7 @@
 
 <h4>Comments: </h4>
 <ul>
-<%= @recipe.comments.each do |comment| %>
+<% @recipe.comments.each do |comment| %>
 <li> <%= comment.title %><br>
 <%= comment.rating %><br>
 <%= comment.body %> </li>
