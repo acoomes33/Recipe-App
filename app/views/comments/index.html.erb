@@ -1,12 +1,15 @@
-<% title "Comments" %>
-
-<div id="comments">
-<% for comment in @comments %>
-    <div class="comment">
-    <%= simple_format comment.content %>
-    </div>
-<%end %>
-</div>
-<h2>New Comment</h2>
-
-<%= render 'form' %>
+<% if @recipe %>
+<h4> <%= @recipe.name %>'s  Reviews:</h4>
+<ul>
+ <% @comments.each do |comment| %>
+ <li><%= link_to comment.title, recipe_comment_path(@recipe, comment) %></li> 
+ <% end %>
+</ul>
+<% else %>
+<h4>All Reviews:</h4>
+<ul>
+ <% @comments.each do |com| %>
+ <li><%= link_to com.title, com %></li> 
+ <% end %>
+</ul>
+<% end %>
