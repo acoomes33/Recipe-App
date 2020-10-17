@@ -11,12 +11,14 @@ Rails.application.routes.draw do
   post '/search', to:'recipes#results'
 
   # resources :ingredients
-  resources :recipes
-  # resources :users
-
+  
   resources :recipes do
     resources :comments
   end
+
+  resources :users
+  resources :recipes
+  # resources :recipes
   resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
