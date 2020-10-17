@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   get '/auth/:google_oauth2/callback' => 'sessions#google'
 
+  get '/recipes/:recipe_id/ingredient/new', to: 'ingredients#new'
+  post '/recipes/:recipe_id/ingredients', to: 'ingredients#create'
 
 
   resources :comments

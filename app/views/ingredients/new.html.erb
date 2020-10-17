@@ -1,0 +1,9 @@
+<%= form_with model:[@recipe, @ingredient], local: :true do |f| %>
+        <%= f.label :count %>
+        <%= f.number_field :count, step: :any %>
+        <%= f.label :measurement %>
+        <%= f.text_field :measurement %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.submit %>
+    <% end %>
