@@ -1,4 +1,4 @@
 class DietaryRestriction < ApplicationRecord
-    has_many :dietary_restriction_recipes
-    has_many :recipes, through: :dietary_restriction_recipes
+    belongs_to :recipe, optional: true
+    validates_presence_of :name
 end
