@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_202109) do
+ActiveRecord::Schema.define(version: 2020_10_17_032551) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_202109) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "dietary_restriction_recipes", force: :cascade do |t|
-    t.integer "dietary_restriction_id", null: false
-    t.integer "recipe_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["dietary_restriction_id"], name: "index_dietary_restriction_recipes_on_dietary_restriction_id"
-    t.index ["recipe_id"], name: "index_dietary_restriction_recipes_on_recipe_id"
   end
 
   create_table "dietary_restrictions", force: :cascade do |t|
@@ -71,8 +62,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_202109) do
 
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
-  add_foreign_key "dietary_restriction_recipes", "dietary_restrictions"
-  add_foreign_key "dietary_restriction_recipes", "recipes"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "recipes", "users"
 end
