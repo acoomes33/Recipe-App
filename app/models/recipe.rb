@@ -11,6 +11,6 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, reject_if: proc {|ing| ing['name'].blank? || ing['count'].blank? || ing['measurement'].blank? }
   accepts_nested_attributes_for :dietary_restrictions, reject_if: proc {|diet| diet['name'].blank? }
 
-  scope :search, -> (query) { where("LOWER(name) LIKE ?", "#{query.downcase}") }
+  scope :search, -> (query) { where("LOWER(name) LIKE ?", "%#{query.downcase}%") }
 
 end
