@@ -1,9 +1,9 @@
 class Recipe < ApplicationRecord
   belongs_to :user
   
-  has_many :comments
-  has_many :ingredients
-  has_many :dietary_restrictions
+  has_many :comments, :dependent => :delete_all
+  has_many :ingredients, :dependent => :delete_all
+  has_many :dietary_restrictions, :dependent => :delete_all
   has_many :users, through: :comments
 
   validates_presence_of :name, :steps, :description

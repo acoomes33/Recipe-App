@@ -1,5 +1,5 @@
-<h1>Recipe Show Page</h1>
-<h2><%= @recipe.name %></h2>
+
+<h1><%= @recipe.name %></h1>
 <p>Description: <%= @recipe.description %></p>
 <h4>Dietary Restrictions: </h4>
 <ul>
@@ -26,7 +26,7 @@
 <% end %>
 </ul>
 
-<%= link_to "Add a Comment", new_recipe_comment_path(@recipe) %>
-
+<%= link_to "Add a Comment", new_recipe_comment_path(@recipe) %><br>
+<%= link_to "See all Comments", recipe_comments_path(@recipe) %>
 <h6><%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %></h6>
 <h6><%= button_to "Delete", @recipe, method: :delete, data: {confirm: "Delete this recipe?"} %></h6>

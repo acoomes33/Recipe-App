@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
         end
     
         if @comment.save
-          redirect_to @comment
+          redirect_to @recipe
         else
           render :new, alert: "Could not create that for you!"
         end

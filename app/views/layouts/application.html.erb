@@ -17,6 +17,7 @@
           <ul>
           <li><%= link_to "Search All Recipes", recipes_path%></li>
           <li><%= link_to "Create A New Recipe", new_recipe_path%><br>
+          <li><%= link_to "User Profile", user_path(current_user) %></li>
         <% else %>
           <li><%= link_to "Login", login_path %></li>
           <li><%= link_to "Signup", signup_path %></li><br>
