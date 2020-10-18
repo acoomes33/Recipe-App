@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    load_and_authorize_resource
+
 
     def index
         if params[:recipe_id]
@@ -50,6 +52,34 @@ class CommentsController < ApplicationController
           render :new, alert: "Could not create that for you!"
         end
       end
+
+      def edit
+        if params[:recipe_id]
+            @recipe = Recipe.find_by_id(params[:recipe_id])
+            @comment = @recipe.comments.find_by(id: params[:id])
+        else 
+            set_comment
+        end
+      end 
+  
+      def update
+        if params[:recipe_id]
+            @recipe = Recipe.find_by_id(params[:recipe_id])
+            @comment = @recipe.comments.find_by(id: params[:id])
+            @comment.update(comment_params)
+        else 
+            set_comment
+            @comment.update(comment_params)
+        end
+      
+        if @comment.valid?
+            @comment.save
+            redirect_to recipe_comment_path(@comment)
+        else
+            flash[:notice] = @comment.errors.full_messages.join(" ")
+            redirect_to edit_recipe_comment_path(@comment)
+        end
+      end 
     
       def destroy
         set_comment
