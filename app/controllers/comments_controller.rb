@@ -51,6 +51,12 @@ class CommentsController < ApplicationController
         end
       end
     
+      def destroy
+        set_comment
+        @comment.destroy
+        # redirect_to root_path
+        redirect_to recipes_path
+      end 
     
       private
     
