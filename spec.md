@@ -18,7 +18,7 @@ Specs:
 - [X] Include form display of validation errors (form URL e.g. /recipes/new) -> project displays validation errors and flash notice messages
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [X] Views use helper methods if appropriate -> .full_name helper method
+- [X] The application is pretty DRY -> used form partials
+- [X] Limited logic in controllers -> extended logic to models
+- [X] Views use helper methods if appropriate -> helper methods are used throughout views
 - [X] Views use partials if appropriate -> new and edit partial forms
