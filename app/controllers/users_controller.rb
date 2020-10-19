@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    skip_before_action :verified_user, only: [:new, :create]
+
 
     def new
         @user = User.new
@@ -20,12 +22,6 @@ class UsersController < ApplicationController
     def show
         @user = User.find_by(id: params[:id])
     end
-
-    def edit 
-    end 
-
-    def update
-    end 
 
     private
 
