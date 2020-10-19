@@ -2,7 +2,7 @@
 
 ## Recipe App
 
-This is a website that handles users and songs that they have entered into the system. A user can sign up, log in, and log out. Once logged in, they can see an index of all songs associated with them, add a new song, edit, and delete songs. Users can only see data that is associated to their account.
+This is a website that handles users,recipes, and comments that they have entered into the system. A user can sign up, log in, and log out. Once logged in, they can see an index of all recipes in collection, search recipes by name, see their profile, add a new recipe, edit, and delete recipes. Users can only edit data that is associated to their account.
 
 ## Installation
 
