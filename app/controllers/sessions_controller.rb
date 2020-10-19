@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            flash[:notice] = @user.errors.full_messages.join(" ")
+            flash.now[:notice] = @user.errors.full_messages.join(" ")
             redirect_to login_path
         end 
     end

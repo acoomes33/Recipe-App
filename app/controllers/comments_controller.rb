@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
           if @recipe.comments.include?(@comment)
              render :show
           else
-            flash[:notice] = "Comment doesn't belong to recipe."
+            flash.now[:notice] = "Comment doesn't belong to recipe."
             redirect_to recipes_path
           end
         else 
@@ -76,7 +76,7 @@ class CommentsController < ApplicationController
             @comment.save
             redirect_to comment_path(@comment)
         else
-            flash[:notice] = @comment.errors.full_messages.join(" ")
+            flash.now[:notice] = @comment.errors.full_messages.join(" ")
             redirect_to edit_recipe_comment_path(@comment)
         end
       end 
