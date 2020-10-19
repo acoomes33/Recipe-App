@@ -74,7 +74,7 @@ class CommentsController < ApplicationController
       
         if @comment.valid?
             @comment.save
-            redirect_to recipe_comment_path(@comment)
+            redirect_to comment_path(@comment)
         else
             flash[:notice] = @comment.errors.full_messages.join(" ")
             redirect_to edit_recipe_comment_path(@comment)
