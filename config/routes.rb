@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   # resources :ingredients
   
   resources :recipes do
-    resources :comments
+    resources :comments, only: [:show, :index, :new, :create]
   end
 
-  resources :users
+  resources :users, only: [:show, :new, :create, :edit, :update]
   resources :recipes
   # resources :recipes
   resources :comments
