@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         end
         if @user && @user.id
           session[:user_id] = @user.id
-          redirect_to recipes_path
+          redirect_to user_path(@user)
         else
           redirect_to login_path
         end
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect_to recipes_path
+            redirect_to user_path(@user)
         else
             flash[:notice] = @user.errors.full_messages.join(" ")
             redirect_to login_path

@@ -6,8 +6,8 @@
 <% @recipe.dietary_restrictions.each do |diet| %>
 <li> <%= diet.name %> </li>
 <% end %>
-</ul><br>
-<h4>Ingredients:</h4><br>
+</ul>
+<h4>Ingredients:</h4>
 <ul>
 <% @recipe.ingredients.each do |ing| %>
 <li> <%= ing.count %> <%= ing.measurement %> <%= ing.name %> </li>
@@ -18,13 +18,13 @@
 <p><%= @recipe.steps %></p>
 
 <h4>Comments: </h4>
-<ul>
+
 <% @recipe.comments.each do |comment| %>
-<li> <%= comment.title %><br>
-<%= comment.rating %><br>
-<%= comment.body %> </li>
+<p> <strong><%= comment.title %></strong><br>
+<%= comment.rating %> Stars<br>
+<%= comment.body %> <p><br>
 <% end %>
-</ul>
+
 
 <%= link_to "Add a Comment", new_recipe_comment_path(@recipe) %><br>
 <%= link_to "See all Comments", recipe_comments_path(@recipe) %>
