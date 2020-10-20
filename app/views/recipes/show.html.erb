@@ -28,5 +28,7 @@
 
 <%= link_to "Add a Comment", new_recipe_comment_path(@recipe) %><br>
 <%= link_to "See all Comments", recipe_comments_path(@recipe) %>
+<% if current_user == @recipe.user %>
 <h6><%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %></h6>
 <h6><%= button_to "Delete", @recipe, method: :delete, data: {confirm: "Delete this recipe?"} %></h6>
+<% end %>
