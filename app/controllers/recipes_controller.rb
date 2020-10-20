@@ -23,10 +23,10 @@ class RecipesController < ApplicationController
     def show
         if @recipe
             render :show
-          else
+        else
             flash.now[:notice] = "Recipe not Found!"
             redirect_to recipes_path
-          end
+        end
     end 
 
     def index
@@ -79,6 +79,6 @@ class RecipesController < ApplicationController
 
     def set_recipe
         @recipe = Recipe.find_by(id: params[:id])
-      end
+    end
 
 end

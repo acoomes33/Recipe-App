@@ -12,32 +12,32 @@ class CommentsController < ApplicationController
         end
       end
     
-      def show
+    def show
         if params[:recipe_id]
           @recipe = Recipe.find_by_id(params[:recipe_id])
           
           set_comment
-          if @recipe.comments.include?(@comment)
-             render :show
-          else
-            flash.now[:notice] = "Comment doesn't belong to recipe."
-            redirect_to recipes_path
-          end
+            if @recipe.comments.include?(@comment)
+                render :show
+            else
+                flash.now[:notice] = "Comment doesn't belong to recipe."
+                redirect_to recipes_path
+            end
         else 
           set_comment
         end
-      end
+    end
     
-      def new
+    def new
         if params[:recipe_id]
           @recipe = Recipe.find_by_id(params[:recipe_id])
           @comment = @recipe.comments.build
         else 
           @comment = Comment.new
         end
-      end
+    end
     
-      def create
+    def create
         if params[:recipe_id]
           @recipe = Recipe.find_by_id(params[:recipe_id])
           @comment = @recipe.comments.build(comment_params)
@@ -51,18 +51,18 @@ class CommentsController < ApplicationController
         else
           render :new, alert: "Could not create that for you!"
         end
-      end
+    end
 
-      def edit
+    def edit
         if params[:recipe_id]
             @recipe = Recipe.find_by_id(params[:recipe_id])
             @comment = @recipe.comments.find_by(id: params[:id])
         else 
             set_comment
         end
-      end 
+    end 
   
-      def update
+    def update
         if params[:recipe_id]
             @recipe = Recipe.find_by_id(params[:recipe_id])
             @comment = @recipe.comments.find_by(id: params[:id])
@@ -79,22 +79,22 @@ class CommentsController < ApplicationController
             flash.now[:notice] = @comment.errors.full_messages.join(" ")
             redirect_to edit_recipe_comment_path(@comment)
         end
-      end 
+    end 
     
-      def destroy
+    def destroy
         set_comment
         @comment.destroy
         # redirect_to root_path
         redirect_to recipes_path
-      end 
+    end 
     
-      private
+    private
     
-      def comment_params
+    def comment_params
         params.require(:comment).permit(:id, :title, :rating, :body)
-      end
+    end
     
-      def set_comment
+    def set_comment
         @comment = Comment.find_by_id(params[:id])
-      end
+    end
 end
