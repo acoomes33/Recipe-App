@@ -1,4 +1,4 @@
-<h1><%= @user.full_name %>'s Profile</h1>
+<h1><%= full_name(@user) %>'s Profile</h1>
 <h2>Recipes: </h2>
 <ul>
 <% @user.recipes.each do |recipe| %>
