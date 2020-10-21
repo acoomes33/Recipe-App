@@ -3,7 +3,7 @@
 <h3><%= @comment.rating %> Stars</h3>
 <p><%= @comment.body %></p>
 <p>- <%= formatted_time(@comment) %></p>
-<h4>Reviewed Recipe: <%= link_to @comment.recipe.name, recipe_path(@comment.recipe) %></h4>
+<h4>Reviewed Recipe: <%= link_to recipe_name(@comment), recipe_path(@comment.recipe) %></h4>
 
 <% if current_user == @comment.user %>
 <% if params[:recipe_id] %>

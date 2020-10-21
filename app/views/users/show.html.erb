@@ -14,7 +14,7 @@
 <li><%= link_to comment.title, comment_path(comment) %><br>
     <strong><%= comment.rating %> Stars</strong><br><br>
     <%= comment.body %><br><br>
-    Reviewed Recipe: <%= link_to comment.recipe.name, recipe_path(comment.recipe) %>
+    Reviewed Recipe: <%= link_to recipe_name(comment), recipe_path(comment.recipe) %>
 </li><br>
 <% end %>
 </ul>
