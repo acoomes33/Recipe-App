@@ -13,4 +13,18 @@ class Recipe < ApplicationRecord
 
   scope :search, -> (query) { where("LOWER(name) LIKE ?", "%#{query.downcase}%") }
 
+
+  def overall_rating
+    rating_sum = 0
+    self.comments.each do |comment|
+      rating_sum += comment.rating
+    end 
+    mean_rating = (rating_sum/self.comments.count) unless self.comments.count == 0
+    if self.comments.count == 0 
+      "No Reviews Yet"
+    else 
+     "#{mean_rating} Stars"
+    end
+  end 
+
 end

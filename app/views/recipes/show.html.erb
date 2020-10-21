@@ -1,6 +1,6 @@
 
 <h1><%= @recipe.name %></h1>
-<h2><%= @recipe.stars %> Stars</h2>
+<h2><%= @recipe.overall_rating %> </h2>
 <h4>By: <%= link_to @recipe.user.full_name, user_path(@recipe.user) %></h4>
 <p>Created: <%= @recipe.created_at.strftime("%d %b %Y") %></p>
 <p>Description: <%= @recipe.description %></p>
