@@ -2,7 +2,7 @@
 <h2>By:  <%= link_to full_name(@comment.user), user_path(@comment.user) %></h2>
 <h3><%= @comment.rating %> Stars</h3>
 <p><%= @comment.body %></p>
-<p>- <%= @comment.created_at.strftime("%d %b %Y") %></p>
+<p>- <%= formatted_time(@comment) %></p>
 <h4>Reviewed Recipe: <%= link_to @comment.recipe.name, recipe_path(@comment.recipe) %></h4>
 
 <% if current_user == @comment.user %>
