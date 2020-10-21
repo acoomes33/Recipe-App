@@ -1,7 +1,9 @@
 <h1><%= @comment.title %></h1>
-<h2>By:  <%= @comment.user.full_name %></h2>
-<h4><%= @comment.rating %> Stars</h4>
+<h2>By:  <%= link_to @comment.user.full_name, user_path(@comment.user) %></h2>
+<h3><%= @comment.rating %> Stars</h3>
 <p><%= @comment.body %></p>
+<p>- <%= @comment.created_at.strftime("%d %b %Y") %></p>
+<h4>Reviewed Recipe: <%= link_to @comment.recipe.name, recipe_path(@comment.recipe) %></h4>
 
 <% if current_user == @comment.user %>
 <% if params[:recipe_id] %>

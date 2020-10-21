@@ -1,5 +1,8 @@
 
 <h1><%= @recipe.name %></h1>
+<h2><%= @recipe.stars %> Stars</h2>
+<h4>By: <%= link_to @recipe.user.full_name, user_path(@recipe.user) %></h4>
+<p>Created: <%= @recipe.created_at.strftime("%d %b %Y") %></p>
 <p>Description: <%= @recipe.description %></p>
 <h4>Dietary Restrictions: </h4>
 <ul>
@@ -20,7 +23,7 @@
 <h4>Comments: </h4>
 
 <% @recipe.comments.each do |comment| %>
-<p> <strong><%= comment.title %></strong><br>
+<p> <strong><%= comment.title %></strong> - <%= link_to comment.user.full_name, user_path(comment.user) %><br>
 <%= comment.rating %> Stars<br>
 <%= comment.body %> <p><br>
 <% end %>
