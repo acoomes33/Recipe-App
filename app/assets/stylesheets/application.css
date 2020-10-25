@@ -18,9 +18,9 @@
     background-color: #484848;
   }
 
-  /* a {
-      color: white;
-  } */
+  div.navbar a {
+    color: white;
+  }
 
   div.alert {
       color: red;
