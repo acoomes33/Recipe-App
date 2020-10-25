@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
             # redirect_to recipe_path
             redirect_to recipe_path(@recipe)
         else
-            flash.now[:notice] = @recipe.errors.full_messages.join(" ")
+            flash.now[:notice] = @recipe.errors.full_messages.to_sentence
             render :new
         end
     end 
@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
             @recipe.save
             redirect_to recipe_path(@recipe)
         else 
-            flash.now[:notice] = @recipe.errors.full_messages.join(" ")
+            flash.now[:notice] = @recipe.errors.full_messages.to_sentence
             redirect_to edit_recipe_path(@recipe)
         end 
     end 
