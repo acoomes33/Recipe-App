@@ -28,8 +28,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     else
-        flash.now[:notice] = @user.errors.full_messages.join(" ")
-        redirect_to login_path
+      redirect_to login_path, notice: "Incorrect email and/or password, please try again."
     end 
   end
 
