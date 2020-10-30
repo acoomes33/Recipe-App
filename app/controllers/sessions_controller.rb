@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end 
 
   def new
+    
   end 
 
   def google
@@ -28,8 +29,8 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     else
-        flash.now[:notice] = @user.errors.full_messages.to_sentence
-        redirect_to login_path
+        redirect_to login_path, notice: "Incorrect email and password, try again."
+        
     end 
   end
 
