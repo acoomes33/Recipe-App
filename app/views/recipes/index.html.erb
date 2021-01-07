@@ -2,6 +2,7 @@
 <h1>All Recipes</h1>
 
 <h2><%= link_to "Search For Recipes", recipes_search_path %></h2>
+<h2><%= link_to "Order by Recipe Name", order_path %></h2>
 
 <% @recipes.each do |recipe| %>
 <%= link_to recipe.name, recipe_path(recipe) %><br>

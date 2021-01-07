@@ -12,8 +12,8 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :dietary_restrictions, reject_if: proc {|diet| diet['name'].blank? }
 
   scope :search, -> (query) { where("LOWER(name) LIKE ?", "%#{query.downcase}%") }
-
-
+  
+  
   def overall_rating
     rating_sum = 0
     self.comments.each do |comment|

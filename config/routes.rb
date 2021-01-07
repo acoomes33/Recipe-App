@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   get '/auth/:google_oauth2/callback' => 'sessions#google'
 
+  get '/order', to: 'recipes#order'
   get '/recipes/search', to:'recipes#search'
   post '/search', to:'recipes#results'
+  
 
   # resources :ingredients
   

@@ -53,9 +53,16 @@ class RecipesController < ApplicationController
         redirect_to recipes_path
     end 
 
+    def order
+        @recipes = Recipe.order(name: :asc)
+    end 
+
+
     def search
 
     end
+
+   
   
     def results
       @recipes = Recipe.search(params[:q])
