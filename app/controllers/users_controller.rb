@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :verified_user, only: [:new, :create]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
     def new
@@ -23,7 +24,30 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
+    def edit
+    end 
+
+    def update
+        @user.update(user_params)
+        if @user.valid?
+            @user.save
+            redirect_to user_path(@user)
+        else 
+            flash.now[:notice] = @user.errors.full_messages.to_sentence
+            redirect_to edit_user_path(@user)
+        end 
+    end 
+
+    def destroy
+        @user.destroy
+        redirect_to welcome_path
+    end 
+
     private
+
+    def set_user
+        @user = User.find_by(id: params[:id])
+    end 
 
     def user_params
         params.require(:user).permit(
