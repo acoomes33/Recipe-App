@@ -29,12 +29,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     else
-<<<<<<< HEAD
       redirect_to login_path, notice: "Incorrect email and/or password, please try again."
-=======
-        redirect_to login_path, notice: "Incorrect email and password, try again."
-        
->>>>>>> css
     end 
   end
 
