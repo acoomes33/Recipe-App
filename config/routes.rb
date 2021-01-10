@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   get '/auth/:google_oauth2/callback' => 'sessions#google'
 
+  get '/order', to: 'recipes#order'
   get '/recipes/search', to:'recipes#search'
   post '/search', to:'recipes#results'
+  
 
   # resources :ingredients
   
@@ -19,6 +21,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create, :edit, :update]
   resources :recipes
   # resources :recipes
-  resources :comments
+  resources :comments, only: [:show, :index, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

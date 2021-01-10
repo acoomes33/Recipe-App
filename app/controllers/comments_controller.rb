@@ -49,7 +49,8 @@ class CommentsController < ApplicationController
         if @comment.save
           redirect_to @recipe
         else
-          render :new, alert: "Could not create that for you!"
+            flash.now[:notice] = @comment.errors.full_messages.to_sentence
+            render :new
         end
     end
 
@@ -74,10 +75,14 @@ class CommentsController < ApplicationController
       
         if @comment.valid?
             @comment.save
-            redirect_to comment_path(@comment)
+            if params[:recipe_id] 
+             redirect_to recipe_comment_path(@recipe, @comment)
+            else
+            redirect_to comment_path( @comment)
+            end
         else
-            flash.now[:notice] = @comment.errors.full_messages.join(" ")
-            redirect_to edit_recipe_comment_path(@comment)
+            flash.now[:notice] = @comment.errors.full_messages.to_sentence
+            render :edit
         end
     end 
     
