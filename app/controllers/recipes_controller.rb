@@ -57,12 +57,8 @@ class RecipesController < ApplicationController
         @recipes = Recipe.order(name: :asc)
     end 
 
-
     def search
-
     end
-
-   
   
     def results
       @recipes = Recipe.search(params[:q])
