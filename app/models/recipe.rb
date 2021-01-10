@@ -15,7 +15,8 @@ class Recipe < ApplicationRecord
   
   
   def overall_rating
-    rating_sum = self.comments.reduce {|sum, num| sum + num}
+    ratings = self.comments.map {|c| c.rating}
+    rating_sum = ratings.reduce(:+)
     mean_rating = (rating_sum/self.comments.count) unless self.comments.count == 0
     self.comments.count == 0 ? "No Reviews Yet" : "#{mean_rating} Stars"
   end 
